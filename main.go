@@ -44,8 +44,12 @@ func main() {
 			nome := lerLinha("Nome: ")
 			email := lerLinha("Email: ")
 			idade := lerInt("Idade: ")
-			u := criar(nome, email, idade)
-			fmt.Printf("Cadastrado: [%d] %s\n", u.ID, u.Nome)
+			u, err := criar(nome, email, idade)
+			if err != nil {
+				fmt.Println("Erro:", err)
+			} else {
+				fmt.Printf("Cadastro: [%d] %s\n", u.ID, u.Nome)
+			}
 
 		case 2:
 			usuarios := listar()
